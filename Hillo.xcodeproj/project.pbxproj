@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E86F953FAB9F6F861FDAE94 /* Pods_Hillo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045EB7EBEA4E7EA8F65ACE13 /* Pods_Hillo.framework */; };
 		C613DB0A1F3B671800B6C4A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C613DB091F3B671800B6C4A0 /* AppDelegate.swift */; };
 		C613DB0C1F3B671800B6C4A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C613DB0B1F3B671800B6C4A0 /* ViewController.swift */; };
 		C613DB0F1F3B671800B6C4A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C613DB0D1F3B671800B6C4A0 /* Main.storyboard */; };
 		C613DB111F3B671800B6C4A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C613DB101F3B671800B6C4A0 /* Assets.xcassets */; };
 		C613DB141F3B671800B6C4A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C613DB121F3B671800B6C4A0 /* LaunchScreen.storyboard */; };
+		C613DB1C1F3B675700B6C4A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C613DB1B1F3B675700B6C4A0 /* GoogleService-Info.plist */; };
+		C6ACF5F71F3BAB47001D9819 /* SignUpFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF5F61F3BAB47001D9819 /* SignUpFormViewController.swift */; };
+		C6ACF5F91F3BAE29001D9819 /* SignInFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF5F81F3BAE29001D9819 /* SignInFormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		045EB7EBEA4E7EA8F65ACE13 /* Pods_Hillo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hillo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9F79AEA6EFB6CFBD4923059 /* Pods-Hillo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hillo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hillo/Pods-Hillo.debug.xcconfig"; sourceTree = "<group>"; };
+		B70FAEC4E34265BB84FEA149 /* Pods-Hillo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hillo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hillo/Pods-Hillo.release.xcconfig"; sourceTree = "<group>"; };
 		C613DB061F3B671800B6C4A0 /* Hillo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hillo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C613DB091F3B671800B6C4A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C613DB0B1F3B671800B6C4A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,9 @@
 		C613DB101F3B671800B6C4A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C613DB131F3B671800B6C4A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C613DB151F3B671800B6C4A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C613DB1B1F3B675700B6C4A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C6ACF5F61F3BAB47001D9819 /* SignUpFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFormViewController.swift; sourceTree = "<group>"; };
+		C6ACF5F81F3BAE29001D9819 /* SignInFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInFormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E86F953FAB9F6F861FDAE94 /* Pods_Hillo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		871D922954006A31C7E517B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				045EB7EBEA4E7EA8F65ACE13 /* Pods_Hillo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7AF7A1645420A38045A0587 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9F79AEA6EFB6CFBD4923059 /* Pods-Hillo.debug.xcconfig */,
+				B70FAEC4E34265BB84FEA149 /* Pods-Hillo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C613DAFD1F3B671800B6C4A0 = {
 			isa = PBXGroup;
 			children = (
 				C613DB081F3B671800B6C4A0 /* Hillo */,
 				C613DB071F3B671800B6C4A0 /* Products */,
+				A7AF7A1645420A38045A0587 /* Pods */,
+				871D922954006A31C7E517B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,10 +86,13 @@
 			children = (
 				C613DB091F3B671800B6C4A0 /* AppDelegate.swift */,
 				C613DB0B1F3B671800B6C4A0 /* ViewController.swift */,
+				C6ACF5F61F3BAB47001D9819 /* SignUpFormViewController.swift */,
+				C6ACF5F81F3BAE29001D9819 /* SignInFormViewController.swift */,
 				C613DB0D1F3B671800B6C4A0 /* Main.storyboard */,
 				C613DB101F3B671800B6C4A0 /* Assets.xcassets */,
 				C613DB121F3B671800B6C4A0 /* LaunchScreen.storyboard */,
 				C613DB151F3B671800B6C4A0 /* Info.plist */,
+				C613DB1B1F3B675700B6C4A0 /* GoogleService-Info.plist */,
 			);
 			path = Hillo;
 			sourceTree = "<group>";
@@ -71,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C613DB181F3B671800B6C4A0 /* Build configuration list for PBXNativeTarget "Hillo" */;
 			buildPhases = (
+				25BE0D6F0DF427DE9A4723D2 /* [CP] Check Pods Manifest.lock */,
 				C613DB021F3B671800B6C4A0 /* Sources */,
 				C613DB031F3B671800B6C4A0 /* Frameworks */,
 				C613DB041F3B671800B6C4A0 /* Resources */,
+				6F0B9272BF0A50FD95277A4B /* [CP] Embed Pods Frameworks */,
+				A026ECA798338BE50B308650 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C613DB141F3B671800B6C4A0 /* LaunchScreen.storyboard in Resources */,
+				C613DB1C1F3B675700B6C4A0 /* GoogleService-Info.plist in Resources */,
 				C613DB111F3B671800B6C4A0 /* Assets.xcassets in Resources */,
 				C613DB0F1F3B671800B6C4A0 /* Main.storyboard in Resources */,
 			);
@@ -132,12 +169,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		25BE0D6F0DF427DE9A4723D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6F0B9272BF0A50FD95277A4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hillo/Pods-Hillo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A026ECA798338BE50B308650 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hillo/Pods-Hillo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C613DB021F3B671800B6C4A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6ACF5F91F3BAE29001D9819 /* SignInFormViewController.swift in Sources */,
 				C613DB0C1F3B671800B6C4A0 /* ViewController.swift in Sources */,
+				C6ACF5F71F3BAB47001D9819 /* SignUpFormViewController.swift in Sources */,
 				C613DB0A1F3B671800B6C4A0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +348,7 @@
 		};
 		C613DB191F3B671800B6C4A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9F79AEA6EFB6CFBD4923059 /* Pods-Hillo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KH26NVSZH5;
@@ -274,6 +362,7 @@
 		};
 		C613DB1A1F3B671800B6C4A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B70FAEC4E34265BB84FEA149 /* Pods-Hillo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KH26NVSZH5;
@@ -304,6 +393,7 @@
 				C613DB1A1F3B671800B6C4A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
