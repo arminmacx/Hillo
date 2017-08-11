@@ -34,9 +34,13 @@ class SignUpFormViewController: UIViewController {
                 if let firebaseError = error {
                     print(firebaseError.localizedDescription)
                     self.isExist = true
+                    //Call function to check errors
+                    self.startSignUp()
                 } else {
                     print(user!.email!)
                     self.isExist = false
+                    //Call Fucntion to check errors
+                    self.startSignUp()
                 }
             })
             }
@@ -48,53 +52,24 @@ class SignUpFormViewController: UIViewController {
     
     @IBAction func startSignUp() {
         if emailText.text == "", passwordText.text == "" {
-            alertPop()
+            showAlretMessage("Oooops", messge: "Email or Password field shouldn't be empty")
         } else if passwordText.text == "" {
-            passEmptyAlert()
+            showAlretMessage("Oooops", messge: "Password field shouldn't be empty or need to be at least 6 characters")
         } else if emailText.text == "" {
-            emailEmptyAlert()
+            showAlretMessage("Oooops", messge: "Email field shouldn't be empty")
         } else if passwordText.text != rePasswordText.text {
-            passNotMatchAlert()
+            showAlretMessage("Ooops", messge: "password are not match please check them again")
         } else if self.isExist != false {
-            userExistError()
+            showAlretMessage("Ooops", messge: "user already exist with this email")
         } else {
             signUpStart()
         }
     }
     
-    
-    func alertPop() {
-        let alert = UIAlertController(title: "Ooops", message: "Email or Password field shouldn't be empty", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    func passEmptyAlert() {
-        let alert = UIAlertController(title: "Ooops", message: "Password field shouldn't be empty or need to be at least 6 characters", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    func emailEmptyAlert() {
-        let alert = UIAlertController(title: "Ooops", message: "Email field shouldn't be empty", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    func passNotMatchAlert() {
-        let alert = UIAlertController(title: "Ooops", message: "password are not match please check them again", preferredStyle: .alert)
+    func showAlretMessage(_ title: String, messge: String) {
+        let alert = UIAlertController(title: title, message: messge, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func userExistError() {
-        let alert = UIAlertController(title: "Ooops", message: "user already exist with this email", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     
 }
