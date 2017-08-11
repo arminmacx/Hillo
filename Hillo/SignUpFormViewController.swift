@@ -33,19 +33,18 @@ class SignUpFormViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: pass, completion: { (user, error) in
                 if let firebaseError = error {
                     print(firebaseError.localizedDescription)
-                    self.isExist = true
                     //Call function to check errors
+                    self.isExist = true
                     self.startSignUp()
                 } else {
                     print(user!.email!)
-                    self.isExist = false
                     //Call Fucntion to check errors
-                    self.startSignUp()
+                    self.isExist = false
+                    
                 }
             })
             }
         }
-//        isExist = !isExist
     }
     
     
@@ -61,7 +60,8 @@ class SignUpFormViewController: UIViewController {
             showAlretMessage("Ooops", messge: "password are not match please check them again")
         } else if self.isExist != false {
             showAlretMessage("Ooops", messge: "user already exist with this email")
-        } else {
+            self.isExist = !self.isExist
+        }else {
             signUpStart()
         }
     }
