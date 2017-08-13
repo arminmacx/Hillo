@@ -14,12 +14,14 @@ class SignUpFormViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var rePasswordText: UITextField!
+    @IBOutlet weak var dismissButton: UIButton!
     
     var isExist = false
     var userName: String!
     var firebaseUser: String!
     var userEmail: String!
     var userPass: String!
+    var userUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +39,33 @@ class SignUpFormViewController: UIViewController {
                     self.isExist = true
                     self.startSignUp()
                 } else {
-                    print(user!.email!)
+                    print("user \(user!.email!) just signed up")
                     //Call Fucntion to check errors
+                    let databaseRef = Database.database().reference(fromURL: "https://hillo-a2be5.firebaseio.com/")
+                    let userRef = databaseRef.child("Users")
+                    let refValues = ["email": email, "pass": pass]
+                    userRef.updateChildValues(refValues, withCompletionBlock: { (err, databaseRef) in
+                        if err != nil {
+                            print(err!)
+                            return
+                        }
+                        print("database Created")
+                        
+                    })
                     self.isExist = false
-                    
+                    self.userUid = user!.uid
+                    self.userName = user!.email
+                    self.performSegue(withIdentifier: "FromSignUp", sender: nil)
                 }
             })
             }
         }
     }
     
-    
-    
+    @IBAction func dismissButtonClicked() {
+        dismiss(animated: true, completion: nil)
+    }
+
     @IBAction func startSignUp() {
         if emailText.text == "", passwordText.text == "" {
             showAlretMessage("Oooops", messge: "Email or Password field shouldn't be empty")
@@ -70,6 +87,14 @@ class SignUpFormViewController: UIViewController {
         let alert = UIAlertController(title: title, message: messge, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FromSignUp" {
+            let destination: ProfileViewController = segue.destination as! ProfileViewController
+            destination.userUid = self.userUid
+            destination.userName = self.userName
+        }
     }
     
 }

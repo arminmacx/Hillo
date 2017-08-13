@@ -14,8 +14,11 @@ class SignInFormViewController: UIViewController {
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
     
     var isExist = false
+    var userUid: String!
+    var userName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +35,21 @@ class SignInFormViewController: UIViewController {
                         self.isExist = true
                         self.startSignIn()
                     } else {
-                        print(user!.email!)
+                        print("User \(user!.email!) just signed in")
                         self.isExist = false
+                        self.userUid = user!.uid
+                        self.userName = user!.email
+                        print("in sign in \(self.userUid)")
+                        self.performSegue(withIdentifier: "FromSignIn", sender: nil)
                         
                     }
                 })
             }
         }
+    }
+    
+    @IBAction func dismissButtonClicked() {
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -54,7 +65,6 @@ class SignInFormViewController: UIViewController {
             self.isExist = !self.isExist
         } else {
             signInStart()
-
         }
     }
     
@@ -62,6 +72,14 @@ class SignInFormViewController: UIViewController {
         let alert = UIAlertController(title: title, message: messge, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FromSignIn" {
+            let destination: ProfileViewController = segue.destination as! ProfileViewController
+            destination.userUid = self.userUid
+            destination.userName = self.userName
+        }
     }
     
 }
