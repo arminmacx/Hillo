@@ -41,7 +41,7 @@ class SignUpFormViewController: UIViewController {
                 } else {
                     print("user \(user!.email!) just signed up")
                     //Call Fucntion to check errors
-                    let databaseRef = Database.database().reference(fromURL: "https://hillo-a2be5.firebaseio.com/")
+                    let databaseRef = Database.database().reference()
                     let userRef = databaseRef.child("Users")
                     let refValues = ["email": email, "pass": pass]
                     userRef.updateChildValues(refValues, withCompletionBlock: { (err, databaseRef) in

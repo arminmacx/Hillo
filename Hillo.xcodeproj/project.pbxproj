@@ -140,6 +140,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = KH26NVSZH5;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
