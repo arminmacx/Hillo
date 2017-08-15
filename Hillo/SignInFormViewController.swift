@@ -9,62 +9,38 @@
 import UIKit
 import Firebase
 
-class SignInFormViewController: UIViewController {
+class SignInFormViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
     
-    var isExist = false
-    var userUid: String!
-    var userName: String!
-    
+    let PROFILE_SEGUE = "FromSignIn"
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userEmail.delegate = self
+        userPassword.delegate = self
     }
-    
-    func signInStart() {
-        if let email = userEmail.text, let pass = userPassword.text {
-            if userPassword.text == userPassword.text {
-                Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
-                    if let firebaseError = error {
-                        print(firebaseError.localizedDescription)
-                        //Check fucntion for error
-                        self.isExist = true
-                        self.startSignIn()
-                    } else {
-                        print("User \(user!.email!) just signed in")
-                        self.isExist = false
-                        self.userUid = user!.uid
-                        self.userName = user!.email
-                        print("in sign in \(self.userUid)")
-                        self.performSegue(withIdentifier: "FromSignIn", sender: nil)
-                        
-                    }
-                })
-            }
-        }
-    }
-    
+
     @IBAction func dismissButtonClicked() {
         dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func startSignIn() {
-        if userEmail.text == "", userPassword.text == "" {
-            showAlretMessage("Oooops", messge: "Email or Password field shouldn't be empty")
-        } else if userPassword.text == "" {
-            showAlretMessage("Oooops", messge: "Password is not correct please try again")
-        } else if userEmail.text == "" {
-            showAlretMessage("Oooops", messge: "Email field shouldn't be empty")
-        } else if isExist != false {
-            showAlretMessage("Oooops", messge: "User is not exist or password is invalid please try again")
-            self.isExist = !self.isExist
+        if userEmail.text != "" && userPassword.text != "" {
+            
+            AuthPro.Instance.login(withEmail: userEmail.text!, withPassword: userPassword.text!, loginHandler: { (message) in
+                if message != nil {
+                    self.showAlretMessage("There Is A Problem With Authentication", messge: message!)
+                } else {
+                    self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
+                }
+            })
         } else {
-            signInStart()
+            showAlretMessage("Email And Password Are Required", messge: "Please enter email and password")
+ 
         }
     }
     
@@ -74,12 +50,17 @@ class SignInFormViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FromSignIn" {
-            let destination: ProfileViewController = segue.destination as! ProfileViewController
-            destination.userUid = self.userUid
-            destination.userName = self.userName
-        }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == PROFILE_SEGUE {
+//            let destination: ProfileViewController = segue.destination as! ProfileViewController
+//
+//        }
+//    }
     
 }

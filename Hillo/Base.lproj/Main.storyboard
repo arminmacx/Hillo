@@ -123,7 +123,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KLC-Vl-nK9">
                                 <rect key="frame" x="30" y="313" width="261" height="40"/>
@@ -199,24 +199,18 @@
                                 <color key="textColor" red="0.9766783644" green="1" blue="0.99188586199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Form" translatesAutoresizingMaskIntoConstraints="NO" id="8YS-l4-8PB">
-                                <rect key="frame" x="20" y="180" width="280" height="225"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SignInForm" translatesAutoresizingMaskIntoConstraints="NO" id="8YS-l4-8PB">
+                                <rect key="frame" x="20" y="225" width="280" height="148"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q8e-Zo-uME">
-                                <rect key="frame" x="30" y="196" width="261" height="40"/>
+                                <rect key="frame" x="30" y="241" width="261" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vmq-vS-P6g">
-                                <rect key="frame" x="30" y="268" width="261" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="re-Type Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DDB-q2-Ahp">
-                                <rect key="frame" x="30" y="345" width="261" height="40"/>
+                                <rect key="frame" x="30" y="313" width="261" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
@@ -271,7 +265,6 @@
                         <outlet property="dismissButton" destination="kwz-QE-doR" id="uWC-m7-0BG"/>
                         <outlet property="emailText" destination="q8e-Zo-uME" id="Xh8-Gg-8TX"/>
                         <outlet property="passwordText" destination="vmq-vS-P6g" id="DM5-Dz-kTv"/>
-                        <outlet property="rePasswordText" destination="DDB-q2-Ahp" id="QT1-sc-88y"/>
                         <segue destination="rJU-Wt-NFL" kind="presentation" identifier="FromSignUp" modalTransitionStyle="crossDissolve" id="yza-ry-yRs"/>
                     </connections>
                 </viewController>
@@ -381,13 +374,12 @@
     <resources>
         <image name="Bg" width="360" height="640"/>
         <image name="Button" width="166" height="72"/>
-        <image name="Form" width="288" height="225"/>
         <image name="SignButton" width="296" height="72"/>
         <image name="SignInForm" width="288" height="148"/>
         <image name="if_upload_1054942" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Acg-Ng-Bm6"/>
         <segue reference="fBl-fJ-LH0"/>
-        <segue reference="yza-ry-yRs"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -36,6 +36,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usernameTextField.delegate = self
+        locationText.delegate = self
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -115,5 +117,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 
   }

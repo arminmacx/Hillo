@@ -6,17 +6,32 @@
 //  Copyright © 2017 Armin. All rights reserved.
 //
 
-//import Foundation
-//import UIKit
-//
-//class Core: NSObject {
-//    
-//    class func showAlretMessage(_ title: String, messge: String) {
-//        let alert = UIAlertController(title: title, message: messge, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//        present(alert, animated: true, completion: nil)
-//        
-//    }
-//    
-//    
-//}
+import Foundation
+import UIKit
+
+class Core {
+
+    private var _userName = "Email"
+    private var _password = "Password"
+    
+    var username: String {
+        get {
+            return _userName
+        }
+        set {
+            _userName = newValue
+        }
+    }
+    
+    var password: String {
+        get {
+            return _password
+        }
+        set {
+            _password = newValue
+        }
+    }
+    
+    
+    
+}

@@ -65,26 +65,12 @@ class ViewController: UIViewController {
         }
     
     @IBAction func signUpButtonTouched() {
-        signUpClicked()
-        
-    }
-    
-    @IBAction func signInButtonTouched() {
-        signInClicked()
-    }
-    
-    func signInClicked() {
-        performSegue(withIdentifier: "SignInForm", sender: nil)
-    }
-    
-    func signUpClicked() {
-        
         performSegue(withIdentifier: "SignUpForm", sender: nil)
     }
     
- 
-
-        
-        
+    @IBAction func signInButtonTouched() {
+        performSegue(withIdentifier: "SignInForm", sender: nil)
+    }
+    
 }
 
