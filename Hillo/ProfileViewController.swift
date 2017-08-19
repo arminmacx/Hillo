@@ -11,7 +11,7 @@ import Firebase
 
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
+    
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var imageUploadButton: UIButton!
@@ -21,41 +21,42 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var uploadingInfoView: UIView!
     
     
     
     var userUid: String!
     var userName: String!
     let imagePicker = UIImagePickerController()
-    let storage = Storage.storage()
     var name: String!
     var imagePath: NSURL!
     var imageName: String!
-
-    
+    var uploadingImage: Data!
+    var loggedInUser: AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
         locationText.delegate = self
-        
+        self.uploadingInfoView.alpha = 0
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         usernameLabel.alpha = 0
         userLocationLabel.alpha = 0
-        print(userUid, userName)
+        loggedInUser = Auth.auth().currentUser
+        
         //add live text input to labels
         usernameTextField.addTarget(self, action: #selector(usernameEndEditing), for: UIControlEvents.editingChanged)
         locationText.addTarget(self, action: #selector(locationTextEndEditing), for: UIControlEvents.editingChanged)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true, completion: nil)
+        
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.profileImage.image = pickedImage
-
-            print(imageName)
+            self.uploadingImage = UIImageJPEGRepresentation(pickedImage, 0.1)
         }
-        dismiss(animated: true, completion: nil)
     }
     
     
@@ -81,12 +82,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         present(optionSelect, animated: true, completion: nil)
     }
-
+    
     @IBAction func doneButtonClicked() {
         if usernameTextField.text == "" {
             showAlretMessage("Oooops", messge: "Username should be set")
         } else {
-            
+            UploadImage.Instance.sendMedia(image: self.uploadingImage)
+            performSegue(withIdentifier: "main", sender: nil)
         }
     }
     
@@ -115,11 +117,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
     }
-
-  }
+    
+}

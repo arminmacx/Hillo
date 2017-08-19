@@ -24,11 +24,19 @@ class CloudDatabase {
         return dbRef.child(Constants.EMAIL)
     }
     
+    var storageRef: StorageReference {
+        return Storage.storage().reference()
+    }
+    
+//    var imageref: StorageReference {
+//        return storageRef.child("\(Constants.IMAGE_STORAGE)")
+//    }
+    
     func saveUser(withID: String, email: String, password: String) {
         let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password, Constants.isValid: true]
-        
         usersRef.child(withID).child(Constants.DATA).setValue(data)
     }
+ 
     
     
     

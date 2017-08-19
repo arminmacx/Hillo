@@ -17,6 +17,7 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var dismissButton: UIButton!
     
     let PROFILE_SEGUE = "FromSignIn"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userEmail.delegate = self
@@ -30,7 +31,6 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func startSignIn() {
         if userEmail.text != "" && userPassword.text != "" {
-            
             AuthPro.Instance.login(withEmail: userEmail.text!, withPassword: userPassword.text!, loginHandler: { (message) in
                 if message != nil {
                     self.showAlretMessage("There Is A Problem With Authentication", messge: message!)

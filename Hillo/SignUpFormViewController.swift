@@ -16,12 +16,6 @@ class SignUpFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var dismissButton: UIButton!
     
     let PROFILE_SEGUE = "FromSignUp"
-    var isExist = false
-    var userName: String!
-    var firebaseUser: String!
-    var userEmail: String!
-    var userPass: String!
-    var userUid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -364,11 +364,30 @@
                         <outlet property="userLocationLabel" destination="Npo-Q2-qCa" id="GgQ-X7-3by"/>
                         <outlet property="usernameLabel" destination="HbE-2C-5PB" id="FCL-Mb-eP6"/>
                         <outlet property="usernameTextField" destination="ltU-NR-uLP" id="di8-Ug-qzF"/>
+                        <segue destination="a0Z-Qi-HSI" kind="show" identifier="main" id="I01-WR-S1b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77L-HZ-6sY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2711.25" y="176.40845070422534"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZEl-LN-bZd">
+            <objects>
+                <viewController id="a0Z-Qi-HSI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="adT-xB-dkT"/>
+                        <viewControllerLayoutGuide type="bottom" id="IWV-0b-eOd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7yT-TK-d2m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tzS-zs-OhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3789" y="176"/>
         </scene>
     </scenes>
     <resources>

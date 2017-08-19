@@ -18,4 +18,7 @@ class Constants {
     static let USERNAME = "username"
     static let NAME = "name"
     static let PHONE = "phone"
+    static let IMAGE_STORAGE = "image_storage/"
+    static let IMAGES = "images"
+    static let URL = "url"
 }
