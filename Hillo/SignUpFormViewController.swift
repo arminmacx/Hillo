@@ -33,9 +33,10 @@ class SignUpFormViewController: UIViewController, UITextFieldDelegate {
             AuthPro.Instance.signUp(withEmail: emailText.text!, withPassword: passwordText.text!, loginHandler: { (message) in
                 
                 if message != nil {
-                    self.showAlretMessage("Problem With Creating  A New User", messge: message!)
+                    self.showAlretMessage("Problem With Creating A New User", messge: message!)
                 } else {
                     self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
+                    self.view.removeFromSuperview()
                 }
             })
         } else {
@@ -54,12 +55,5 @@ class SignUpFormViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "FromSignUp" {
-//            let destination: ProfileViewController = segue.destination as! ProfileViewController
-//            destination.userUid = self.userUid
-//            destination.userName = self.userName
-//        }
-//    }
-//    
+ 
 }

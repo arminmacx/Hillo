@@ -6,7 +6,7 @@
 //  Copyright © 2017 Armin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Firebase
 
 
@@ -17,13 +17,16 @@ class UploadImage {
         return _instance
     }
     
-    func sendMedia(image: Data?) {
+    
+    
+    func sendMedia(image: Data?, progress: UIProgressView, withCompletionHandler:@escaping (Bool) -> Void) {
         if image != nil {
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
-            CloudDatabase.Instance.storageRef.child("\(Constants.IMAGE_STORAGE)" + "\(NSUUID().uuidString).jpg").putData(image!, metadata: uploadMetadata) {
+            let uploadTask = CloudDatabase.Instance.storageRef.child("\(Constants.IMAGE_STORAGE)" + "\(NSUUID().uuidString).jpg").putData(image!, metadata: uploadMetadata) {
                 (metadata: StorageMetadata?, err: Error?) in
                 if err != nil {
+                    withCompletionHandler(false)
                     print(err!.localizedDescription)
                     return
                 } else {
@@ -39,9 +42,20 @@ class UploadImage {
                     print(download?.absoluteString ?? "")
                 }
             }
+            uploadTask.observe(.progress, handler: { (snapshot) in
+                let pro = snapshot.progress
+                progress.progress = Float((pro?.fractionCompleted)!)
+               // let pro = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+                progress.progress = Float((pro?.fractionCompleted)!)
+                if pro?.fractionCompleted == 1.0 {
+                    withCompletionHandler(true)
+                } else {
+                    withCompletionHandler(false)
+                    return
+                }
+            })
         }
     }
-    
     
     
 }

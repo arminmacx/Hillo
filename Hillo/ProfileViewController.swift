@@ -21,16 +21,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var uploadingInfoView: UIView!
-    
-    
+
     
     var userUid: String!
     var userName: String!
     let imagePicker = UIImagePickerController()
     var name: String!
-    var imagePath: NSURL!
-    var imageName: String!
     var uploadingImage: Data!
     var loggedInUser: AnyObject?
     
@@ -38,7 +34,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         usernameTextField.delegate = self
         locationText.delegate = self
-        self.uploadingInfoView.alpha = 0
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         usernameLabel.alpha = 0
@@ -55,9 +50,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.profileImage.image = pickedImage
-            self.uploadingImage = UIImageJPEGRepresentation(pickedImage, 0.1)
+            self.uploadingImage = UIImageJPEGRepresentation(pickedImage, 0.6)
         }
-    }
+    }//ImagePicker Func
     
     
     @IBAction func selectImageProfile(_ sender: UIButton) {
@@ -65,13 +60,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let photoLibrary = UIAlertAction(title: "Photo Library", style: .default, handler: {
             (action:UIAlertAction) -> Void in
-            self.imagePicker.allowsEditing = false
+            self.imagePicker.allowsEditing = true
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         })
         let cameraSelect = UIAlertAction(title: "Camera", style: .default, handler: {
             (action:UIAlertAction) -> Void in
-            self.imagePicker.allowsEditing = false
+            self.imagePicker.allowsEditing = true
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         })
@@ -81,14 +76,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         optionSelect.addAction(cameraSelect)
         
         present(optionSelect, animated: true, completion: nil)
-    }
+    }//AlertAction Sheet Func for picking image source
     
     @IBAction func doneButtonClicked() {
         if usernameTextField.text == "" {
             showAlretMessage("Oooops", messge: "Username should be set")
         } else {
-            UploadImage.Instance.sendMedia(image: self.uploadingImage)
-            performSegue(withIdentifier: "main", sender: nil)
+            UploadImage.Instance.sendMedia(image: self.uploadingImage, progress: self.progressView) { (success) in
+                if (success) {
+                    self.performSegue(withIdentifier: "main", sender: nil)
+                    self.view.removeFromSuperview()
+                } else {
+                    return
+                }
+            }
         }
     }
     
@@ -122,6 +123,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MainViewController {
+            destination.userSelectedImageForUpload = self.profileImage.image
+            destination.userNameText = self.usernameTextField.text
+        }
     }
     
 }

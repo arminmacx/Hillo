@@ -36,6 +36,7 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
                     self.showAlretMessage("There Is A Problem With Authentication", messge: message!)
                 } else {
                     self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
+                    self.view.removeFromSuperview()
                 }
             })
         } else {
@@ -55,12 +56,5 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == PROFILE_SEGUE {
-//            let destination: ProfileViewController = segue.destination as! ProfileViewController
-//
-//        }
-//    }
-    
+
 }

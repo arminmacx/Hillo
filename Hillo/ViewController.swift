@@ -66,10 +66,12 @@ class ViewController: UIViewController {
     
     @IBAction func signUpButtonTouched() {
         performSegue(withIdentifier: "SignUpForm", sender: nil)
+        self.view.removeFromSuperview()
     }
     
     @IBAction func signInButtonTouched() {
         performSegue(withIdentifier: "SignInForm", sender: nil)
+        self.view.removeFromSuperview()
     }
     
 }

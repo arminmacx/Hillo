@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E86F953FAB9F6F861FDAE94 /* Pods_Hillo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045EB7EBEA4E7EA8F65ACE13 /* Pods_Hillo.framework */; };
+		C60A7CD51F4A211600D00665 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A7CD41F4A211600D00665 /* MainViewController.swift */; };
 		C613DB0A1F3B671800B6C4A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C613DB091F3B671800B6C4A0 /* AppDelegate.swift */; };
 		C613DB0C1F3B671800B6C4A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C613DB0B1F3B671800B6C4A0 /* ViewController.swift */; };
 		C613DB0F1F3B671800B6C4A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C613DB0D1F3B671800B6C4A0 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		045EB7EBEA4E7EA8F65ACE13 /* Pods_Hillo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hillo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F79AEA6EFB6CFBD4923059 /* Pods-Hillo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hillo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hillo/Pods-Hillo.debug.xcconfig"; sourceTree = "<group>"; };
 		B70FAEC4E34265BB84FEA149 /* Pods-Hillo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hillo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hillo/Pods-Hillo.release.xcconfig"; sourceTree = "<group>"; };
+		C60A7CD41F4A211600D00665 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C613DB061F3B671800B6C4A0 /* Hillo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hillo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C613DB091F3B671800B6C4A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C613DB0B1F3B671800B6C4A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				C6ACF5F61F3BAB47001D9819 /* SignUpFormViewController.swift */,
 				C6ACF5F81F3BAE29001D9819 /* SignInFormViewController.swift */,
 				C690DFCA1F3F15E20061A678 /* ProfileViewController.swift */,
+				C60A7CD41F4A211600D00665 /* MainViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C690DFCF1F3F481A0061A678 /* Core.swift in Sources */,
+				C60A7CD51F4A211600D00665 /* MainViewController.swift in Sources */,
 				C6ACF5F91F3BAE29001D9819 /* SignInFormViewController.swift in Sources */,
 				C67FA4291F459E03005395F3 /* UploadImage.swift in Sources */,
 				C6DFA2761F438A0D00EF7B5D /* CloudDatabase.swift in Sources */,
