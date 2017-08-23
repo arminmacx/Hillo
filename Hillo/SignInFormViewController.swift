@@ -36,7 +36,6 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
                     self.showAlretMessage("There Is A Problem With Authentication", messge: message!)
                 } else {
                     self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
-                    self.view.removeFromSuperview()
                 }
             })
         } else {

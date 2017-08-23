@@ -14,9 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var LogoText: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var buttonImageSignUp: UIImageView!
-    @IBOutlet weak var buttonImageSignIn: UIImageView!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +23,7 @@ class ViewController: UIViewController {
         LogoText.alpha = 0
         signInButton.alpha = 0
         signUpButton.alpha = 0
-        buttonImageSignIn.alpha = 0
-        buttonImageSignUp.alpha = 0
+        
         
     }
     
@@ -49,7 +46,6 @@ class ViewController: UIViewController {
     
     func showSignUp() {
         UIView.animate(withDuration: 1, animations: {
-            self.buttonImageSignUp.alpha = 1
             self.signUpButton.alpha = 1
         }, completion: { (true) in
             self.showSignIn()
@@ -58,21 +54,19 @@ class ViewController: UIViewController {
         
         func showSignIn() {
             UIView.animate(withDuration: 1, animations: {
-                self.buttonImageSignIn.alpha = 1
                 self.signInButton.alpha = 1
             })
             
         }
-    
+
     @IBAction func signUpButtonTouched() {
         performSegue(withIdentifier: "SignUpForm", sender: nil)
-        self.view.removeFromSuperview()
     }
     
     @IBAction func signInButtonTouched() {
         performSegue(withIdentifier: "SignInForm", sender: nil)
-        self.view.removeFromSuperview()
     }
     
+
 }
 

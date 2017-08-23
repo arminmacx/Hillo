@@ -19,8 +19,10 @@ class SignUpFormViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.preferredContentSize = CGSize(width: 300, height: 300)
         emailText.delegate = self
         passwordText.delegate = self
+        
     }
     
     
@@ -36,7 +38,6 @@ class SignUpFormViewController: UIViewController, UITextFieldDelegate {
                     self.showAlretMessage("Problem With Creating A New User", messge: message!)
                 } else {
                     self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
-                    self.view.removeFromSuperview()
                 }
             })
         } else {

@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
+    
 
     
     var userUid: String!
@@ -39,7 +40,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         usernameLabel.alpha = 0
         userLocationLabel.alpha = 0
         loggedInUser = Auth.auth().currentUser
-        
+        profileImage.layer.cornerRadius = 50
+        profileImage.clipsToBounds = true
         //add live text input to labels
         usernameTextField.addTarget(self, action: #selector(usernameEndEditing), for: UIControlEvents.editingChanged)
         locationText.addTarget(self, action: #selector(locationTextEndEditing), for: UIControlEvents.editingChanged)
@@ -51,6 +53,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.profileImage.image = pickedImage
             self.uploadingImage = UIImageJPEGRepresentation(pickedImage, 0.6)
+        } else {
+            let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+            self.profileImage.image = pickedImage
+            self.uploadingImage = UIImageJPEGRepresentation(pickedImage!, 0.6)
         }
     }//ImagePicker Func
     
@@ -70,12 +76,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         })
-        
+
         optionSelect.addAction(cancelAction)
         optionSelect.addAction(photoLibrary)
         optionSelect.addAction(cameraSelect)
         
         present(optionSelect, animated: true, completion: nil)
+        
     }//AlertAction Sheet Func for picking image source
     
     @IBAction func doneButtonClicked() {
@@ -85,7 +92,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             UploadImage.Instance.sendMedia(image: self.uploadingImage, progress: self.progressView) { (success) in
                 if (success) {
                     self.performSegue(withIdentifier: "main", sender: nil)
-                    self.view.removeFromSuperview()
                 } else {
                     return
                 }
@@ -131,5 +137,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             destination.userNameText = self.usernameTextField.text
         }
     }
+    
+    
+    
     
 }

@@ -45,8 +45,6 @@ class UploadImage {
             uploadTask.observe(.progress, handler: { (snapshot) in
                 let pro = snapshot.progress
                 progress.progress = Float((pro?.fractionCompleted)!)
-               // let pro = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
-                progress.progress = Float((pro?.fractionCompleted)!)
                 if pro?.fractionCompleted == 1.0 {
                     withCompletionHandler(true)
                 } else {
