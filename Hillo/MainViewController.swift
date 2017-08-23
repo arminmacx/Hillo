@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         userProfileImage.clipsToBounds = true
         userProfileImage.layer.borderWidth = 2.0
         userProfileImage.layer.borderColor = UIColor.white.cgColor
-        postView.layer.cornerRadius = 25.0
+        postView.layer.cornerRadius = 15.0
         postView.clipsToBounds = true
         userNameLabel.text = userNameText
     }

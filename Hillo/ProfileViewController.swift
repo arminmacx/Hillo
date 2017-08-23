@@ -22,12 +22,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
-
-    
-    var userUid: String!
-    var userName: String!
     let imagePicker = UIImagePickerController()
-    var name: String!
     var uploadingImage: Data!
     var loggedInUser: AnyObject?
     
@@ -36,12 +31,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         usernameTextField.delegate = self
         locationText.delegate = self
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
         usernameLabel.alpha = 0
         userLocationLabel.alpha = 0
         loggedInUser = Auth.auth().currentUser
         profileImage.layer.cornerRadius = 50
         profileImage.clipsToBounds = true
+        
         //add live text input to labels
         usernameTextField.addTarget(self, action: #selector(usernameEndEditing), for: UIControlEvents.editingChanged)
         locationText.addTarget(self, action: #selector(locationTextEndEditing), for: UIControlEvents.editingChanged)
@@ -53,10 +48,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.profileImage.image = pickedImage
             self.uploadingImage = UIImageJPEGRepresentation(pickedImage, 0.6)
-        } else {
-            let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage
-            self.profileImage.image = pickedImage
-            self.uploadingImage = UIImageJPEGRepresentation(pickedImage!, 0.6)
+        } else if let editedImaged = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.profileImage.image = editedImaged
+            self.uploadingImage = UIImageJPEGRepresentation(editedImaged, 0.6)
         }
     }//ImagePicker Func
     
@@ -76,7 +70,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         })
-
+        
         optionSelect.addAction(cancelAction)
         optionSelect.addAction(photoLibrary)
         optionSelect.addAction(cameraSelect)
@@ -91,6 +85,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else {
             UploadImage.Instance.sendMedia(image: self.uploadingImage, progress: self.progressView) { (success) in
                 if (success) {
+                    CloudDatabase.Instance.usersRef.child("\(String(describing: Auth.auth().currentUser!.uid))/\(Constants.DATA)/\(Constants.USERNAME)/").setValue(self.usernameTextField.text)
                     self.performSegue(withIdentifier: "main", sender: nil)
                 } else {
                     return
@@ -105,7 +100,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         usernameLabel.text = usernameTextField.text
         UIView.animate(withDuration: 1, animations: {
             self.usernameLabel.alpha = 1
-            self.usernameLabel.textColor = UIColor.white
+            self.usernameLabel.textColor = UIColor.black
             
         })
     }
@@ -114,7 +109,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         userLocationLabel.text = locationText.text
         UIView.animate(withDuration: 1, animations: {
             self.userLocationLabel.alpha = 1
-            self.userLocationLabel.textColor = UIColor.white
+            self.userLocationLabel.textColor = UIColor.black
             
         })
     }

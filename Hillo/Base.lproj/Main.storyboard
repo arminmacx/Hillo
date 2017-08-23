@@ -356,16 +356,15 @@
                                 <rect key="frame" x="83" y="317" width="149" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Khz-2Q-ia5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="if_upload_1054942" translatesAutoresizingMaskIntoConstraints="NO" id="Khz-2Q-ia5">
                                 <rect key="frame" x="110" y="111" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcR-Pk-Ul8">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYj-ma-zQx">
                                 <rect key="frame" x="110" y="111" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="if_upload_1054942"/>
                                 <connections>
-                                    <action selector="selectImageProfile:" destination="rJU-Wt-NFL" eventType="touchUpInside" id="EFY-ys-5v0"/>
+                                    <action selector="selectImageProfile:" destination="rJU-Wt-NFL" eventType="touchUpInside" id="OSn-NE-UJL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -373,7 +372,6 @@
                     </view>
                     <connections>
                         <outlet property="doneButton" destination="K2Z-SR-KJd" id="2GE-p2-yvy"/>
-                        <outlet property="imageUploadButton" destination="VcR-Pk-Ul8" id="f10-dG-llC"/>
                         <outlet property="locationText" destination="0bR-qm-29j" id="sxr-3X-MT5"/>
                         <outlet property="profileImage" destination="Khz-2Q-ia5" id="kwA-cf-9AF"/>
                         <outlet property="progressView" destination="Gx5-kQ-RvP" id="CIC-dQ-naA"/>
@@ -403,11 +401,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oEa-tb-fl2">
-                                <rect key="frame" x="16" y="245" width="288" height="303"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ML-uE-JSq">
                                 <rect key="frame" x="110" y="28" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -419,11 +412,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3g-rb-3Jb">
+                                <rect key="frame" x="16" y="245" width="288" height="303"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="postView" destination="oEa-tb-fl2" id="u3N-FN-BD0"/>
+                        <outlet property="postView" destination="h3g-rb-3Jb" id="b8P-cY-mST"/>
                         <outlet property="userNameLabel" destination="6TH-jH-UYQ" id="4Px-Re-7Fg"/>
                         <outlet property="userProfileImage" destination="4ML-uE-JSq" id="s8u-iC-y3w"/>
                     </connections>
