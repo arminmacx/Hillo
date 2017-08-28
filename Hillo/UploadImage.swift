@@ -11,7 +11,7 @@ import Firebase
 
 
 class UploadImage {
-    static let _instance = UploadImage()
+    private static let _instance = UploadImage()
     
     static var Instance: UploadImage {
         return _instance
@@ -33,7 +33,7 @@ class UploadImage {
                     print(metadata!)
                     let loggedInUser = Auth.auth().currentUser
                     let key = CloudDatabase.Instance.dbRef.child(Constants.EMAIL).child(loggedInUser!.uid).child(Constants.DATA).childByAutoId().key
-                    
+                
                     let download = metadata?.downloadURL()
                     
                     let image = [Constants.URL: download?.absoluteString]

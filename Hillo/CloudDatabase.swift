@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 class CloudDatabase {
-    static let _instance = CloudDatabase()
+    private static let _instance = CloudDatabase()
     
     static var Instance: CloudDatabase {
         return _instance

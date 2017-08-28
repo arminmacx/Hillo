@@ -22,7 +22,7 @@ struct LoginErrorCode {
 
 
 class AuthPro {
-    static let _instance = AuthPro()
+    private static let _instance = AuthPro()
     
     static var Instance: AuthPro {
         return _instance

@@ -13,7 +13,7 @@ import Firebase
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView?
     @IBOutlet weak var imageUploadButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -34,8 +34,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         usernameLabel.alpha = 0
         userLocationLabel.alpha = 0
         loggedInUser = Auth.auth().currentUser
-        profileImage.layer.cornerRadius = 50
-        profileImage.clipsToBounds = true
+        profileImage?.layer.cornerRadius = 50
+        profileImage?.clipsToBounds = true
         
         //add live text input to labels
         usernameTextField.addTarget(self, action: #selector(usernameEndEditing), for: UIControlEvents.editingChanged)
@@ -46,10 +46,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dismiss(animated: true, completion: nil)
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.profileImage.image = pickedImage
+            self.profileImage?.image = pickedImage
             self.uploadingImage = UIImageJPEGRepresentation(pickedImage, 0.6)
         } else if let editedImaged = info[UIImagePickerControllerEditedImage] as? UIImage {
-            self.profileImage.image = editedImaged
+            self.profileImage?.image = editedImaged
             self.uploadingImage = UIImageJPEGRepresentation(editedImaged, 0.6)
         }
     }//ImagePicker Func
@@ -128,7 +128,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MainViewController {
-            destination.userSelectedImageForUpload = self.profileImage.image
+            destination.userSelectedImageForUpload = self.profileImage?.image
             destination.userNameText = self.usernameTextField.text
         }
     }
