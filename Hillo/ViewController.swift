@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
 
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,12 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let keyChain = AuthPro().keyChain
+        if keyChain.get("uid") != nil {
+            performSegue(withIdentifier: "mainView", sender: nil)
+        }
+        
         UIView.animate(withDuration: 1, animations: {
             self.backImage.alpha = 1
         }) { (true) in
@@ -67,6 +76,11 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "SignInForm", sender: nil)
     }
     
+    
+    func CompleteSignIn(id: String) {
+        let keyChain = AuthPro().keyChain
+        keyChain.set(id, forKey: "uid")
+    }
 
 }
 

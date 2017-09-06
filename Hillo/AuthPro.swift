@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import KeychainSwift
 
 typealias LoginHandler = (_ msg: String?) -> Void
 
@@ -23,10 +24,20 @@ struct LoginErrorCode {
 
 class AuthPro {
     private static let _instance = AuthPro()
+    private static var _keyChain = KeychainSwift()
     
     static var Instance: AuthPro {
         return _instance
     }
+    
+    var keyChain: KeychainSwift {
+        get {
+            return AuthPro._keyChain
+        } set {
+            AuthPro._keyChain = newValue
+        }
+    }
+    
     
     func login(withEmail: String, withPassword: String, loginHandler: LoginHandler?) {
         Auth.auth().signIn(withEmail: withEmail, password: withPassword, completion: { (user, error) in

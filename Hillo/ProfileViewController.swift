@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var uploadingImage: Data!
     var loggedInUser: AnyObject?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
@@ -81,7 +82,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func doneButtonClicked() {
         if usernameTextField.text == "" {
-            showAlretMessage("Oooops", messge: "Username should be set")
+            showAlertMessage("Oooops", message: "Username should be set")
         } else {
             UploadImage.Instance.sendMedia(image: self.uploadingImage, progress: self.progressView) { (success) in
                 if (success) {
@@ -114,8 +115,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         })
     }
     
-    func showAlretMessage(_ title: String, messge: String) {
-        let alert = UIAlertController(title: title, message: messge, preferredStyle: .alert)
+    func showAlertMessage(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -128,7 +129,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MainViewController {
-            destination.userSelectedImageForUpload = self.profileImage?.image
             destination.userNameText = self.usernameTextField.text
         }
     }

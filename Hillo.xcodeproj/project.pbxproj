@@ -17,9 +17,9 @@
 		C613DB1C1F3B675700B6C4A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C613DB1B1F3B675700B6C4A0 /* GoogleService-Info.plist */; };
 		C67FA4291F459E03005395F3 /* UploadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67FA4281F459E03005395F3 /* UploadImage.swift */; };
 		C690DFCB1F3F15E20061A678 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690DFCA1F3F15E20061A678 /* ProfileViewController.swift */; };
-		C690DFCF1F3F481A0061A678 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690DFCE1F3F481A0061A678 /* Core.swift */; };
 		C6ACF5F71F3BAB47001D9819 /* SignUpFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF5F61F3BAB47001D9819 /* SignUpFormViewController.swift */; };
 		C6ACF5F91F3BAE29001D9819 /* SignInFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACF5F81F3BAE29001D9819 /* SignInFormViewController.swift */; };
+		C6C35AD31F5FF2E200CB1165 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C35AD21F5FF2E200CB1165 /* SignOut.swift */; };
 		C6DFA2741F4372C900EF7B5D /* AuthPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DFA2731F4372C900EF7B5D /* AuthPro.swift */; };
 		C6DFA2761F438A0D00EF7B5D /* CloudDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DFA2751F438A0D00EF7B5D /* CloudDatabase.swift */; };
 		C6DFA27A1F438BB700EF7B5D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DFA2791F438BB700EF7B5D /* Constants.swift */; };
@@ -40,9 +40,9 @@
 		C613DB1B1F3B675700B6C4A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C67FA4281F459E03005395F3 /* UploadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadImage.swift; sourceTree = "<group>"; };
 		C690DFCA1F3F15E20061A678 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		C690DFCE1F3F481A0061A678 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		C6ACF5F61F3BAB47001D9819 /* SignUpFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFormViewController.swift; sourceTree = "<group>"; };
 		C6ACF5F81F3BAE29001D9819 /* SignInFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInFormViewController.swift; sourceTree = "<group>"; };
+		C6C35AD21F5FF2E200CB1165 /* SignOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
 		C6DFA2731F4372C900EF7B5D /* AuthPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthPro.swift; sourceTree = "<group>"; };
 		C6DFA2751F438A0D00EF7B5D /* CloudDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDatabase.swift; sourceTree = "<group>"; };
 		C6DFA2791F438BB700EF7B5D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -103,9 +103,7 @@
 				C6DFA26E1F4320B000EF7B5D /* View */,
 				C6DFA26D1F4320A400EF7B5D /* Model */,
 				C613DB091F3B671800B6C4A0 /* AppDelegate.swift */,
-				C613DB0D1F3B671800B6C4A0 /* Main.storyboard */,
 				C613DB101F3B671800B6C4A0 /* Assets.xcassets */,
-				C613DB121F3B671800B6C4A0 /* LaunchScreen.storyboard */,
 				C613DB151F3B671800B6C4A0 /* Info.plist */,
 				C613DB1B1F3B675700B6C4A0 /* GoogleService-Info.plist */,
 			);
@@ -119,7 +117,7 @@
 				C6DFA2751F438A0D00EF7B5D /* CloudDatabase.swift */,
 				C67FA4281F459E03005395F3 /* UploadImage.swift */,
 				C6DFA2791F438BB700EF7B5D /* Constants.swift */,
-				C690DFCE1F3F481A0061A678 /* Core.swift */,
+				C6C35AD21F5FF2E200CB1165 /* SignOut.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -127,6 +125,8 @@
 		C6DFA26E1F4320B000EF7B5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C613DB0D1F3B671800B6C4A0 /* Main.storyboard */,
+				C613DB121F3B671800B6C4A0 /* LaunchScreen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -280,10 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C690DFCF1F3F481A0061A678 /* Core.swift in Sources */,
 				C60A7CD51F4A211600D00665 /* MainViewController.swift in Sources */,
 				C6ACF5F91F3BAE29001D9819 /* SignInFormViewController.swift in Sources */,
 				C67FA4291F459E03005395F3 /* UploadImage.swift in Sources */,
+				C6C35AD31F5FF2E200CB1165 /* SignOut.swift in Sources */,
 				C6DFA2761F438A0D00EF7B5D /* CloudDatabase.swift in Sources */,
 				C613DB0C1F3B671800B6C4A0 /* ViewController.swift in Sources */,
 				C690DFCB1F3F15E20061A678 /* ProfileViewController.swift in Sources */,

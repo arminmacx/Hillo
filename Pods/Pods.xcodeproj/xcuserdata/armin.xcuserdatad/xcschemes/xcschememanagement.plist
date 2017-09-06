@@ -14,10 +14,20 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>KeychainSwift.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods-Hillo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
+		</dict>
+		<key>leveldb-library.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
@@ -32,7 +42,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>266AE1506DAD13D34C0725E909C0C476</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38ACA430605AFB4229712A18BDDF5086</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>39F7D7D1E5DDFECED46F298F6EEBB716</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43533D2074F32C77FF16BC725D172196</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82A812CA58FF410671293B05C046B7CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

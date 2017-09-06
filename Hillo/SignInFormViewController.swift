@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import KeychainSwift
 
 class SignInFormViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,6 +23,10 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         userEmail.delegate = self
         userPassword.delegate = self
+        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        dismissTap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(dismissTap)
+        
     }
 
     @IBAction func dismissButtonClicked() {
@@ -33,27 +38,41 @@ class SignInFormViewController: UIViewController, UITextFieldDelegate {
         if userEmail.text != "" && userPassword.text != "" {
             AuthPro.Instance.login(withEmail: userEmail.text!, withPassword: userPassword.text!, loginHandler: { (message) in
                 if message != nil {
-                    self.showAlretMessage("There Is A Problem With Authentication", messge: message!)
+                    self.showAlertMessage("There Is A Problem With Authentication", message: message!)
                 } else {
+                    self.CompleteSignIn(id: (Auth.auth().currentUser?.uid)!)
+                    self.userPassword.text = ""
+                    self.userEmail.text = ""
                     self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
                 }
             })
         } else {
-            showAlretMessage("Email And Password Are Required", messge: "Please enter email and password")
+            showAlertMessage("Email And Password Are Required", message: "Please enter email and password")
  
         }
     }
     
-    func showAlretMessage(_ title: String, messge: String) {
-        let alert = UIAlertController(title: title, message: messge, preferredStyle: .alert)
+    func showAlertMessage(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        userEmail.resignFirstResponder()
+        userPassword.resignFirstResponder()
         return true
     }
     
+    func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    func CompleteSignIn(id: String) {
+        let keyChain = AuthPro().keyChain
+        keyChain.set(id, forKey: "uid")
+    }
+
 
 }
